@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fakhri.website</title>
+    <style>
+        body { margin: 0; font-family: Arial, sans-serif;  }
+        html {
+            scroll-behavior: smooth; /* Smooth scrolling for all links */
+        }
+        .navbar {
+            background-color: #000000;
+            color: #fff;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: color 0.3s;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;   
+            transition: 4s ease;
+            padding: 0 20px;
+            transition: color 3s;
+        }
+
+        .logo a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+            transition: color 3s;
+        }
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            position: relative;
+            width: 30px;
+            height: 21px;
+            z-index: 1001;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: color 0.3s;
+        }
+
+        .menu-toggle .bar {
+            background-color: #fff; height: 3px;  width: 100%;   transition: all 0.3s ease;
+        }
+
+        .nav-links {
+            list-style: none; display: flex;  margin: 0;  padding: 0;
+        }
+
+        .nav-links li {  margin: 0 15px; }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover { color: #ddd; }
+
+        /* Responsive styles */
+        @media (max-width: 768px) { 
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background-color: #333;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                z-index: 1000;
+                padding: 0;
+                transition: color 0.3s;
+            }
+
+ /* About Section */
+ .about { 
+            padding: 60px 20px; 
+            background-color: #00000098;  
+            text-align: center; 
+        }
+
+        .about h2 { 
+            font-size: 36px; 
+            margin-bottom: 20px; 
+        }
+
+        .about p { 
+            font-size: 18px; 
+            line-height: 1.6; 
+            margin: 0 auto; 
+            max-width: 800px; 
+        }
+
+            .nav-links.active { display: flex; }
+            .nav-links li {  margin: 15px 0;  text-align: center; }
+            .nav-links a { font-size: 20px; }
+        }
+
+        /* Hide menu-toggle on larger screens */
+        @media (min-width: 769px) {
+            .menu-toggle {
+                display: none;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;  height: auto; margin-top: 60px; padding: 10px 20px;
+            box-sizing: border-box;
+            background-color: rgb(94, 94, 94);
+        }
+
+        .hero-col {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            box-sizing: border-box;
+            border: 0px solid #ddd;
+            border-radius: 10px;
+            margin: 10px;
+            background-color: #fff;
+            transition: color 2s;
+        }
+
+        .skills {
+    padding: 60px 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.skills h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.skills table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+.skills th, .skills td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+.skills th {
+    background-color: #333;
+    color: #fff;
+    font-size: 18px;
+}
+
+.skills td {
+    background-color: #fff;
+    font-size: 16px;
+}
+
+.skills tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.skills tr:hover {
+    background-color: #ddd;
+}
+
+.bar-container {
+    position: relative;
+    height: 20px;
+    background-color: #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.bar {
+    height: 100%;
+    background-color: #4caf50; /* Change color as needed */
+    border-radius: 5px;
+    transition: width 0.3s ease;
+    text-align: center;
+    line-height: 20px;
+    color: #fff;
+    font-weight: bold;
+}
+.portfolio {
+    padding: 60px 20px;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+.portfolio h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.portfolio-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.portfolio-item {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 300px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.portfolio-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.portfolio-info {
+    padding: 20px;
+}
+
+.portfolio-info h3 {
+    font-size: 24px;
+    margin: 0 0 10px;
+}
+
+.portfolio-info p {
+    font-size: 16px;
+    margin: 0 0 10px;
+}
+
+.portfolio-info a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.portfolio-info a:hover {
+    text-decoration: underline;
+}
+
+.contact-info {
+    padding: 60px 20px;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+.contact-info h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.contact-info-items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.contact-info-item {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 100%;
+    max-width: 400px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.contact-info-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.contact-info-item h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.contact-info-item p {
+    font-size: 16px;
+    margin: 0;
+}
+
+.contact-info-item a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contact-info-item a:hover {
+    text-decoration: underline;
+}
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.footer-left {
+    font-size: 14px;
+}
+
+.footer-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 15px;
+}
+
+.footer-nav li {
+    display: inline;
+}
+
+.footer-nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.footer-nav a:hover {
+    text-decoration: underline;
+}
+
+.footer-right {
+    display: flex;
+    gap: 15px;
+}
+
+.footer-right a {
+    display: block;
+}
+
+.footer-right img {
+    width: 24px;
+    height: 24px;
+}
+
+
+
+
+        
+ 
+        
+        .hero-col.left { flex: 1; }
+        .hero-col.right { flex: 1; display: flex; justify-content: center; }
+        .hero-col.right img { width: 100%;  height: auto;  border: 1px solid #ddd;  border-radius: 10px; }
+        .hero-col.left h1 { margin: 0; font-size: 36px; }
+        .hero-col.left p { font-size: 24px; margin: 0;   }
+
+        @media (max-width: 768px) {
+            .hero {  flex-direction: column; padding: 10px 20px; }
+            .hero-col { margin: 0; padding: 20px; }
+            .hero-col.left { text-align: center; } 
+         .hero-col.right { margin-top: 20px; padding: 0; }
+        }
+
+ /* About Section */
+        .about { padding: 60px 20px; background-color: #f4f4f4;  text-align: center; }
+        .about h2 { font-size: 36px; margin-bottom: 20px; }
+        .about p { font-size: 18px; line-height: 1.6; margin: 0 auto; max-width: 800px; }
+
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="#">MyWebsite</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></i>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-col left">
+            <div>
+                <h1>Welcome to</h1>
+                <p>My Personal Website</p>
+            </div>
+        </div>
+        <div class="hero-col right">
+            <img src="pildun.jpg"Illustration">
+        </div>
+    </section>
+
+<!-- About Section -->
+<section class="about" id="about">
+    <div>
+        <div class="about">
+            <h2>Tentang Saya</h2>
+            <p>
+                Halo, nama saya Fakhri Sidqi Nuriadi. Saya lahir di Bogor pada tanggal 14 November 2008, dan saat ini saya duduk di bangku kelas 10 di SMKN 1 Ciomas, jurusan PPLG 3.
+        
+                Di sekolah, saya sangat menikmati pelajaran dan kegiatan yang berkaitan dengan teknologi dan pengembangan perangkat lunak, yang merupakan bagian dari jurusan saya. Saya selalu berusaha untuk mengikuti perkembangan terbaru di bidang ini dan mencari cara untuk menerapkannya dalam proyek-proyek praktis.
+                
+                Di luar jam pelajaran, saya memiliki hobi yang sangat saya gemari, yaitu bermain bola. Olahraga ini bukan hanya sebagai sarana untuk menjaga kebugaran fisik saya, tetapi juga sebagai cara untuk mengembangkan kerja sama tim dan keterampilan strategis. Saya sering bermain dengan teman-teman di lapangan dan merasa bahwa bermain bola membantu saya untuk tetap fokus dan memotivasi diri.
+                
+                Saya juga aktif dalam berbagai kegiatan di sekolah, termasuk estrakulikuler futsal, yang memungkinkan saya untuk mengembangkan keterampilan kepemimpinan dan kerja sama tim. Saya berusaha untuk selalu terbuka terhadap peluang baru dan siap menghadapi tantangan yang ada.
+                
+                Saya percaya bahwa setiap pengalaman, baik di dalam maupun di luar sekolah, memberikan pelajaran berharga yang membantu saya untuk tumbuh dan berkembang. Saya berharap untuk terus belajar dan mengeksplorasi berbagai bidang minat saya, serta berkontribusi secara positif dalam lingkungan sekitar saya.
+                
+            </p>
+        </div>
+    </div>
+</section>
+<!-- Skills Section -->
+<section class="skills" id="skills">
+    <div class="container">
+        <h2>Skills</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Skill</th>
+                    <th>Proficiency</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>HTML</td>
+                    <td><div class="bar-container"><div class="bar" style="width: 90%;"></div></div></td>
+                </tr>
+                <tr>
+                    <td>CSS</td>
+                    <td><div class="bar-container"><div class="bar" style="width: 90%;"></div></div></td>
+                </tr>
+                <tr>
+                    <td>JavaScript</td>
+                    <td><div class="bar-container"><div class="bar" style="width: 30%;"></div></div></td>
+                </tr>
+                <tr>
+                    <td>Python</td>
+                    <td><div class="bar-container"><div class="bar" style="width: 1%;"></div></div></td>
+                </tr>
+                <tr>
+                    <td>C#</td>
+                    <td><div class="bar-container"><div class="bar" style="width: 4%;"></div></div></td>
+                </tr>
+                <!-- Add more skills as needed -->
+            </tbody>
+        </table>
+    </div>
+</section>
+<!-- Portfolio Section -->
+<section class="portfolio" id="portfolio">
+    <div class="container">
+        <h2>Portfolio</h2>
+        <div class="portfolio-items">
+            <div class="portfolio-item">
+                <img src="project1.jpg" alt="Project 1">
+                <div class="portfolio-info">
+                    <h3>Project 1</h3>
+                    <p>Description of Project 1. This project involves...</p>
+                    <a href="https://www.example.com" target="_blank">View Project</a>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="project2.jpg" alt="Project 2">
+                <div class="portfolio-info">
+                    <h3>Project 2</h3>
+                    <p>Description of Project 2. This project includes...</p>
+                    <a href="https://www.example.com" target="_blank">View Project</a>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="project3.jpg" alt="Project 3">
+                <div class="portfolio-info">
+                    <h3>Project 3</h3>
+                    <p>Description of Project 3. This project features...</p>
+                    <a href="https://www.example.com" target="_blank">View Project</a>
+                </div>
+            </div>
+            <!-- Add more portfolio items as needed -->
+        </div>
+        
+    </div>
+</section>
+
+<!-- Contact Information Section -->
+<section class="contact-info" id="contact">
+    <div class="container">
+        <h2>Contact Information</h2>
+        <div class="contact-info-items">
+            <div class="contact-info-item">
+                <h3>Address</h3>
+                <p>Bogor, Jalan ciomas harapan rt03 rw09 no 50</p>
+            </div>
+            <div class="contact-info-item">
+                <h3>Phone</h3>
+                <p>+62-813-8418-8044</p>
+            </div>
+            <div class="contact-info-item">
+                <h3>Email</h3>
+                <p><a href="mailto:info@example.com">yt76278@gmail.com</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Footer Section -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-left">
+                <p>&copy; 2024 MyWebsite. Dibuat dengan sepenuh hati.</p>
+            </div>
+
+                <f1>
+                    FAKHRI SIDQI NURIADI
+                </f1>
+
+                <!-- Add more social media links as needed -->
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+
+
+
+<script>       
+document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menu-toggle');
+            const navLinks = document.getElementById('nav-links');
+            menuToggle.addEventListener('click', function() {
+                  navLinks.classList.toggle('active');
+            });
+            
+            // Menambahkan event listener untuk setiap link dalam menu
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', function() {
+                navLinks.classList.remove('active'); // Menutup menu setelah item diklik
+                });
+            });
+        });
+
+        document.querySelectorAll('.scroll-button').forEach(button => {
+    button.addEventListener('click', function() {
+        const targetId = this.getAttribute('data-target');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+            targetElement.scrollIntoView({
+                behavior: 'smooth' // Smooth scrolling
+            });
+        }
+    });
+});
+ </script>
+</body>
+</html>

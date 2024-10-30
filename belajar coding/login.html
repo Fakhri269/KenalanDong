@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Navbar</title>
+    <style>
+        body { margin: 0; font-family: Arial, sans-serif;  }
+
+        .navbar {
+            background-color: #333;
+            color: #fff;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;   
+padding: 0 20px;
+        }
+
+        .logo a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            position: relative;
+            width: 30px;
+            height: 21px;
+            z-index: 1001;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .menu-toggle .bar {
+            background-color: #fff; height: 3px;  width: 100%;   transition: all 0.3s ease;
+        }
+
+        .nav-links {
+            list-style: none; display: flex;  margin: 0;  padding: 0;
+        }
+
+        .nav-links li {  margin: 0 15px; }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover { color: #ddd; }
+
+        /* Responsive styles */
+        @media (max-width: 768px) { 
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background-color: #333;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                z-index: 1000;
+                padding: 0;
+            }
+
+            .nav-links.active { display: flex; }
+            .nav-links li {  margin: 15px 0;  text-align: center; }
+            .nav-links a { font-size: 20px; }
+        }
+
+        /* Hide menu-toggle on larger screens */
+        @media (min-width: 769px) {
+            .menu-toggle {
+                display: none;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;  height: auto; margin-top: 60px; padding: 10px 20px;
+            box-sizing: border-box;
+            background-color: green;
+        }
+
+        .hero-col {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            box-sizing: border-box;
+            border: 0px solid #ddd;
+            border-radius: 10px;
+            margin: 10px;
+            background-color: #fff;
+        }
+
+        .hero-col.left { flex: 1; }
+        .hero-col.right { flex: 1; display: flex; justify-content: center; }
+        .hero-col.right img { width: 100%;  height: auto;  border: 1px solid #ddd;  border-radius: 10px; }
+        .hero-col.left h1 { margin: 0; font-size: 36px; }
+        .hero-col.left p { font-size: 24px; margin: 0;   }
+
+        @media (max-width: 768px) {
+            .hero {  flex-direction: column; padding: 10px 20px; }
+            .hero-col { margin: 0; padding: 20px; }
+            .hero-col.left { text-align: center; } 
+         .hero-col.right { margin-top: 20px; padding: 0; }
+        }
+
+ /* About Section */
+        .about { padding: 60px 20px; background-color: #f4f4f4;  text-align: center; }
+        .about h2 { font-size: 36px; margin-bottom: 20px; }
+        .about p { font-size: 18px; line-height: 1.6; margin: 0 auto; max-width: 800px; }
+
+    </style>
+</head>
+
+
+
+
+
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="#">MyWebsite</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#portfolio">Contact</a></i>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+
+<script>       
+document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menu-toggle');
+            const navLinks = document.getElementById('nav-links');
+            menuToggle.addEventListener('click', function() {
+                  navLinks.classList.toggle('active');
+            });
+            
+            // Menambahkan event listener untuk setiap link dalam menu
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', function() {
+                navLinks.classList.remove('active'); // Menutup menu setelah item diklik
+                });
+            });
+        });
+ </script>
+</body>
+</html>
+    <style>
+    .form-container {
+        background: #fff;
+        padding: 20px;
+        margin: 200px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        width: 100%;
+    }
+    h1 {
+        margin-bottom: 20px;
+    }
+    label {
+        display: block;
+        margin-bottom: 8px;
+    }
+    input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+    button {
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        border: none;
+        color: white;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #0056b3;
+    }
+</style>
+</head>
+<body>
+<center>
+    <div class="form-container">
+        <h1>Login</h1>
+        <form action="HOMEE.html">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            
+            <button type="submit">Login</button>
+        </form>
+    </div>
+</center>
+</body>
+</html>
